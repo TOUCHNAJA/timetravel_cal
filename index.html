@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>คำนวณเวลาการเดินทาง</title>
+</head>
+<body>
+
+<h1>คำนวณเวลาการเดินทาง</h1>
+
+<div>
+  <label for="distance">ระยะทางระหว่างสองสถานที่ (กิโลเมตร): </label>
+  <input type="number" id="distanceInput" value="150">
+</div>
+
+<div>
+  <label for="averageSpeed">ความเร็วเฉลี่ยของรถยนต์ (กิโลเมตรต่อชั่วโมง): </label>
+  <input type="number" id="averageSpeedInput" value="60">
+</div>
+
+<button onclick="calculateTravelTime()">คำนวณ</button>
+
+<p id="travelTime"></p>
+
+<script>
+function calculateTravelTime() {
+  var distance = parseFloat(document.getElementById('distanceInput').value);
+  var averageSpeed = parseFloat(document.getElementById('averageSpeedInput').value);
+
+  var timeHours = distance / averageSpeed;
+  var timeMinutes = timeHours * 60;
+
+  var hours = Math.floor(timeHours);
+  var minutes = Math.round(timeMinutes % 60);
+
+  var travelTimeText = 'เวลาที่ใช้ในการเดินทาง: ' + hours + ' ชั่วโมง ' + minutes + ' นาที';
+  document.getElementById('travelTime').innerHTML = travelTimeText;
+}
+</script>
+
+</body>
+</html>
